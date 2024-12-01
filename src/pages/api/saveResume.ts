@@ -1,7 +1,8 @@
 // pages/api/saveResume.js
 import pool from "@/helpers/utils/pg-client";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handler(req, res) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
     const { updatedResumeJson } = req.body;
 
@@ -15,6 +16,6 @@ export default async function handler(req, res) {
       res.status(500).json(error);
     }
   } else {
-    res.status(405).json({ error: "Method not allowed" });
+    res.status(405).json({ message: "Method Not Allowed" });
   }
 }
